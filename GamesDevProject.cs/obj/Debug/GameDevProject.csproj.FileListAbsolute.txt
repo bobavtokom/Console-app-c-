@@ -1,0 +1,8 @@
+C:\Users\Boban\source\repos\GamesDevProject.cs\GamesDevProject.cs\bin\Debug\GamesDevProject.cs.exe.config
+C:\Users\Boban\source\repos\GamesDevProject.cs\GamesDevProject.cs\bin\Debug\GamesDevProject.cs.exe
+C:\Users\Boban\source\repos\GamesDevProject.cs\GamesDevProject.cs\bin\Debug\GamesDevProject.cs.pdb
+C:\Users\Boban\source\repos\GamesDevProject.cs\GamesDevProject.cs\obj\Debug\GameDevProject.csproj.AssemblyReference.cache
+C:\Users\Boban\source\repos\GamesDevProject.cs\GamesDevProject.cs\obj\Debug\GameDevProject.csproj.SuggestedBindingRedirects.cache
+C:\Users\Boban\source\repos\GamesDevProject.cs\GamesDevProject.cs\obj\Debug\GameDevProject.csproj.CoreCompileInputs.cache
+C:\Users\Boban\source\repos\GamesDevProject.cs\GamesDevProject.cs\obj\Debug\GamesDevProject.cs.exe
+C:\Users\Boban\source\repos\GamesDevProject.cs\GamesDevProject.cs\obj\Debug\GamesDevProject.cs.pdb
