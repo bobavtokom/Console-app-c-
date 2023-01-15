@@ -1,1 +1,2 @@
-# Console-app-c-
+# Console-app-c# 
+created in purpose of learning.
