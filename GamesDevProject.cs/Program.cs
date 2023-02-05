@@ -9,10 +9,13 @@ namespace GamesDevProject {
      class Program {
         static void Main(string[] args) {
              PayingToGaming payment = new PayingToGaming();
-             payment.Inception();
-            //CardsGame.DrawCard1();
-            //CardsGame.DrawCard2();
-            //CardsGame.Win();
+             payment.Inception(new GeneralGamesMenu(), new PayingNotes(),new StartGames());
+
+
+            //BiggerCardGame.PlayBiggerCard();
+            
+
+           
 
         }
     }

@@ -43,15 +43,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColorNotes.cs" />
     <Compile Include="GeneralGamesMenu.cs" />
-    <Compile Include="LotteryGame.cs" />
+    <Compile Include="IPayingNotes.cs" />
+    <Compile Include="IColoredNotes.cs" />
+    <Compile Include="ILanguages.cs" />
+    <Compile Include="IStartGame.cs" />
+    <Compile Include="BiggerCardGame.cs" />
+    <Compile Include="MenuEng.cs" />
+    <Compile Include="MenuEngStates.cs" />
     <Compile Include="MenuMkd.cs" />
+    <Compile Include="Parameters.cs" />
+    <Compile Include="PayingNotes.cs" />
     <Compile Include="Payment.cs" />
     <Compile Include="PlayerWallet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PyramidGame.cs" />
-    <Compile Include="TableGame.cs" />
+    <Compile Include="MatrixGame.cs" />
+    <Compile Include="StartGames.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

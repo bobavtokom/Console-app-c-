@@ -2,18 +2,18 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace GamesDevProject {
     class MatrixGame {
-        public static void EnterMatrixColumnRate() => Console.WriteLine("Insert column rate");
-        public static void EnterMatrixRawRate() => Console.WriteLine("Insert raw rate");
-        public static void MatrixGreeting() => Console.WriteLine("You may play now");
+        public static void EnterMatrixColumnRate(string insertColumnRate) => Console.WriteLine(insertColumnRate);
+        public static void EnterMatrixRawRate(string insertRawRate) => Console.WriteLine(insertRawRate);
         public static void MatrixDisplay() {
-            EnterMatrixRawRate();
+            EnterMatrixRawRate(Parameters.InsertRawRate);
             int matrixRawRate = Convert.ToInt32(Console.ReadLine());
-            EnterMatrixColumnRate();
+            EnterMatrixColumnRate(Parameters.InsertColumnRate);
             int matrixColumnRate = Convert.ToInt32(Console.ReadLine());
             int[,] TableCalendar = new int[50,50];
             for (int i = 0; i < TableCalendar.GetLength(0); i += matrixRawRate) {
@@ -26,12 +26,11 @@ namespace GamesDevProject {
         }
      
         public static void StartMatrix() {
-            MatrixGreeting();
             MatrixDisplay();
-            PyramidGame.PlayAgainPrompt(PyramidGame.playAgainPromptEng);
+            PyramidGame.PlayAgainPrompt(Parameters.PlayAgainPrompt);
             var playAgainAnswer = Console.ReadLine();
             if (playAgainAnswer == "1") {
-                GeneralGamesMenu.PriceToPlayMatrix(GeneralGamesMenu.matrixPriceEng);
+                GeneralGamesMenu.PriceToPlayState();
                 PayingToGaming payingToGaming = new PayingToGaming();
                 PayingToGaming.PayForGame(PayingToGaming.matrixPrice);
                 StartMatrix();

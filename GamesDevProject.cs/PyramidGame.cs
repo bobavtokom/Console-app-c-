@@ -10,11 +10,20 @@ using System.Threading.Tasks;
 namespace GamesDevProject {
     public class PyramidGame {
         public static double pyramidPrice = 2.5;
-        
+        public static string yes = "1";
+        public static string no = "2";
+        public static string refund = "3";
         public static string emptyFields = " ";
         public static string stars = "* ";
-        public static string pyramidGreetingEng = " Please insert number of pyramid levels wanted : ";
-        public static string playAgainPromptEng = "To play again enter \"1\" " + "\n" + "To go to General Menu  enter \"2\"" + "\n" + " To exit press \" Enter \"";
+        public static string playAgainAnswer;
+        public string PlayAgainAnswer { get; set; }
+        public PyramidGame() {
+            PlayAgainAnswer = playAgainAnswer;
+            if (playAgainAnswer == "1") {
+                playAgainAnswer = "yes";
+            }
+            if (playAgainAnswer == no) playAgainAnswer = "no";
+        }
         public static void PlayAgainPrompt(string playAgainPrompt) => Console.WriteLine(playAgainPrompt);
         public static void PyramidGreeting(string pyramidGreeting) => Console.WriteLine(pyramidGreeting);
         public static void WriteLevelsAndStars() {
@@ -30,53 +39,32 @@ namespace GamesDevProject {
             }
         }
         public static void StartPyramid() {
-            if (GeneralGamesMenu.languagePrompt == "1") {
-                    PyramidGreeting(pyramidGreetingEng);
+            
+                    PyramidGreeting(Parameters.PyramidGreeting);
                     WriteLevelsAndStars();
-                    PlayAgainPrompt(playAgainPromptEng);
+                    PlayAgainPrompt(Parameters.PlayAgainPrompt);
                     var playAgainAnswer = Console.ReadLine();
-                while (playAgainAnswer != "1" && playAgainAnswer != "2") PlayAgainPrompt(playAgainPromptEng);
-                if (playAgainAnswer == "1") {
-                    GeneralGamesMenu.PriceToPlayPyramid(GeneralGamesMenu.pyramidPriceEng);
-                    while (PayingToGaming.currentBalance < pyramidPrice) {
-                        PayingToGaming.EmptyWallet(PayingToGaming.fillWalletPromptEng, PayingToGaming.choosePayToPlayEng,
-                    PayingToGaming.choosePaymentMethodEng, PlayerWallet.insertPlayerNameEng,
-                    PlayerWallet.insertBalanceEng, PlayerWallet.cardNamePromptEng, PlayerWallet.insertCardNumberEng, GeneralGamesMenu.chooseGameEng,
-                    GeneralGamesMenu.pyramidPriceEng, GeneralGamesMenu.matrixPriceEng);
+            while (playAgainAnswer != yes && playAgainAnswer != no) {
+                PlayAgainPrompt(Parameters.PlayAgainPrompt);
+                playAgainAnswer = Console.ReadLine();
+
+            }
+            switch (playAgainAnswer) {
+                case "1":
+                    while (PayingToGaming.currentBalance < Parameters.GamePrice) {
+                        PayingToGaming.EmptyWallet(Parameters.FillWalletPrompt, Parameters.InsertPlayerName,
+                        Parameters.InsertBalance, Parameters.CardNamePrompt, Parameters.InsertCardNumber, new PayingNotes());
                         PayingToGaming.currentBalance = PlayerWallet.walletBalance;
                     }
-                    GeneralGamesMenu.PriceToPlayPyramid(GeneralGamesMenu.pyramidPriceEng);
-                    PayingToGaming.PayForGame(pyramidPrice);
-                    GeneralGamesMenu.RefundPrompt(GeneralGamesMenu.refundPromptEng);
-                    if (GeneralGamesMenu.refundAnswer == "3") {
+                    GeneralGamesMenu.PriceToPlayState();
+                    PayingToGaming.PayForGame(Parameters.GamePrice);
+                    GeneralGamesMenu.RefundPrompt(Parameters.RefundPrompt);
+                    if (GeneralGamesMenu.refundAnswer == refund) {
                         PayingToGaming payingToGaming = new PayingToGaming();
-                        payingToGaming.Refund(pyramidPrice);
+                        payingToGaming.Refund(Parameters.GamePrice);
                     } else StartPyramid();
-                }
-                if (playAgainAnswer == "2") GeneralGamesMenu.Greeting();
-            }else if (GeneralGamesMenu.languagePrompt == "2") {
-                    PyramidGreeting(MenuMkd.pyramidGreetingMkd);
-                    WriteLevelsAndStars();
-                    PlayAgainPrompt(MenuMkd.playAgainPromptMkd);
-                    var playAgainAnswer = Console.ReadLine();
-                while (playAgainAnswer != "1" && playAgainAnswer != "2") PlayAgainPrompt(MenuMkd.playAgainPromptMkd);
-                if (playAgainAnswer == "1") {
-                    GeneralGamesMenu.PriceToPlayPyramid(MenuMkd.pyramidPriceMkd);
-                    while (PayingToGaming.currentBalance < pyramidPrice) {
-                        PayingToGaming.EmptyWallet(MenuMkd.fillWalletPromptMkd, MenuMkd.choosePayToPlayMkd,
-                    MenuMkd.choosePaymentMethodMkd, MenuMkd.insertPlayerNameMkd,
-                    MenuMkd.insertBalanceMkd, MenuMkd.cardNamePromptMkd, MenuMkd.insertCardNumberMkd, MenuMkd.chooseGameMkd,
-                    MenuMkd.pyramidPriceMkd, MenuMkd.matrixPriceMkd);
-                        PayingToGaming.currentBalance = PlayerWallet.walletBalance;
-                    }
-                    GeneralGamesMenu.PriceToPlayPyramid(MenuMkd.pyramidPriceMkd);
-                    PayingToGaming.PayForGame(pyramidPrice);
-                    GeneralGamesMenu.RefundPrompt(MenuMkd.refundPromptMkd);
-                    if (GeneralGamesMenu.refundAnswer == "3") {
-                        PayingToGaming payingToGaming = new PayingToGaming();
-                        payingToGaming.Refund(pyramidPrice);
-                    } else StartPyramid();
-                }
+                    break;
+                    case "2": GeneralGamesMenu.Greeting(); break;
             }
         }
     }
