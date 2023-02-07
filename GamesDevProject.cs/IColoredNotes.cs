@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace GamesDevProject.cs {
     public interface IColoredNotes {
-        void ColoredNotes();
+        void ColoredNotes(string note1);
     }
 }

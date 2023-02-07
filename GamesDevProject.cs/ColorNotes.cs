@@ -2,12 +2,12 @@
 
 namespace GamesDevProject.cs {
     public class ColorNotes : IColoredNotes {
-        public void ColoredNotes() {
+        public void ColoredNotes(string note1) {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("BEWARE OF HAZARD");
+            Console.WriteLine(note1);
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("This game is for entertaining purposes only");
+            Console.WriteLine();
             Console.ResetColor();
         }
     }

@@ -62,7 +62,7 @@ namespace GamesDevProject.cs {
             Parameters parameters = new Parameters();    
             InsertPlayerName(insertPlayerName);
             InsertBalance(insertBalance);
-            coloredNotes.ColoredNotes();
+            coloredNotes.ColoredNotes(Parameters.Success);
             PlayerWallet playerWallet = new PlayerWallet(playerName, walletBalance + PayingToGaming.currentBalance);
         }
         public static void FillWalletByCard(string insertPlayerName,string insertCardName, string insertCardNumber, string insertBalance, IColoredNotes coloredNotes) {
@@ -71,7 +71,7 @@ namespace GamesDevProject.cs {
             InsertCardName(insertCardName);
             InsertCardNumber(insertCardNumber);
             InsertBalance(insertBalance);
-            coloredNotes.ColoredNotes();
+            coloredNotes.ColoredNotes(Parameters.Success);
             PlayerWallet playerWallet = new PlayerWallet(playerName, walletBalance + PayingToGaming.currentBalance);
         }
         public PlayerWallet(string playerName, double walletBalance) {

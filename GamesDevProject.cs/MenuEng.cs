@@ -21,12 +21,16 @@ namespace GamesDevProject.cs {
                 {"insertBalanceEng",  "Insert balance " },
                 {"cardNamePromptEng", " Please insert card name" },
                 {"insertCardNumberEng", "Insert card number" },
-                {"chooseGameEng", "Choose a game " + "\n" + "Enter \"1\" for Pyramid  or \"2\" for Matrix" },
+                {"chooseGameEng", "Choose a game " + "\n" + "Enter \"1\" for Pyramid " + "\n" + " \"2\" for Matrix" + "\n" + "\"3\"  for BiggerCard"},
                 {"emptyNameNote", "Name can't be empty!" },
                 {"enterCashAmount", "Please enter amount "},
                 {"enterUserName" , "Please enter username"},
+                {"successEng", "Success" },
+                {"successMkd", "Успешно" },
                 {"maybeNextTimeEng", "Ok maybe next time" + "\n" + "Have a nice day" },
                 {"insertColumnRateEng", "Insert column rate" },
+                {"hazardGameNoteEng", "BEWARE OF HAZARD!" },
+                {"hazardGameNoteMkd", "Внимание хазардна игра!" },
                 {"insertRawRateEng", "\"Insert raw rate\"" },
                 {"matrixPriceStateEng", "The price for this game is " + PayingToGaming.matrixPrice + "\n" },
                 {"pyramidPriceEng" , "The price for this game is " + PayingToGaming.pyramidPrice + "\n"},
@@ -40,6 +44,10 @@ namespace GamesDevProject.cs {
                 {"goodbyeEng", "Thank you " + "\n" + "Bye bye" },
                 {"notValidInputEng", "Not valid input " }
             };
+        }
+        public string this[string languageLinekey] {
+            get { return StatesEng[languageLinekey]; }
+            set { StatesEng[languageLinekey] = value; }
         }
     }
 }

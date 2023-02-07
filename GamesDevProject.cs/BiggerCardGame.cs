@@ -16,6 +16,7 @@ namespace GamesDevProject.cs {
         public static string confirm = "y";
         public static string cash = "1";
         public static string card = "2";
+        public static readonly double minimumBetAmount = 1;
         public static int min = 1;
         public static int max = 14;
         public static Random deckOfCards = new Random();
@@ -53,16 +54,24 @@ namespace GamesDevProject.cs {
         }
 
         public static void PlayBiggerCard(IColoredNotes coloredNotes, ILanguages languages, IPayingNotes payingNotes) {
-            coloredNotes.ColoredNotes();
+            coloredNotes.ColoredNotes(Parameters.HazardGameNote);
             Parameters parameters = new Parameters();
             payingNotes.ChoosePayToPlay(Parameters.ChoosePayToPlay);
             while (payingNotes.PromptToPay != confirm) payingNotes.ChoosePayToPlay(Parameters.ChoosePayToPlay);
             PlaceYourBet();
+            while (BetAmount > PlayerWallet.WalletBalance && BetAmount < minimumBetAmount) PlaceYourBet();
+            Console.WriteLine("your bet: {0:C}", BetAmount);
             DrawYourCard();
             DrawComputerCard();
-            if (yourCard > compCard) Console.WriteLine("you win");
-            else if (yourCard == compCard) Console.WriteLine("No one wins, try again ");
-            else Console.WriteLine("You lose ");
+            if (yourCard > compCard) {
+                Console.WriteLine("you win");
+                PlayerWallet.WalletBalance += BetAmount;
+            } else if (yourCard == compCard) Console.WriteLine("No one wins, try again ");
+            else {
+                Console.WriteLine("You lose ");
+                PlayerWallet.WalletBalance -= BetAmount;
+            }
+            PlayerWallet playerWallet = new PlayerWallet(PlayerWallet.PlayerName, PlayerWallet.WalletBalance);
         }
         
 

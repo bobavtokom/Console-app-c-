@@ -31,12 +31,17 @@ namespace GamesDevProject.cs {
         public static string GamesMenu { get; set; }
         public static string ChoosePayToPlay { get; set; }
         public static string NotValidInput { get; set; }
+        public static string HazardGameNote { get; set; }
         public static double GamePrice { get; set; }
-        
+        public static string Success { get; set; }
+
         public Parameters () {
-             if (GeneralGamesMenu.languagePrompt == GeneralGamesMenu.english) {
-            //switch (GeneralGamesMenu.languagePrompt) {
+            var languageNoteKey = new MenuEng();
+            if (GeneralGamesMenu.languagePrompt == GeneralGamesMenu.english) {
+                //switch (GeneralGamesMenu.languagePrompt) {
                 //case "english":
+                    Success = languageNoteKey["successEng"];
+                    HazardGameNote = languageNoteKey["hazardGameNoteEng"];
                     InsertPlayerName = MenuEngStates.insertPlayerNameEng;
                     InsertBalance = MenuEngStates.insertBalanceEng;
                     CardNamePrompt = MenuEngStates.cardNamePromptEng;
@@ -64,7 +69,8 @@ namespace GamesDevProject.cs {
 
                     }
                     if (GeneralGamesMenu.languagePrompt == GeneralGamesMenu.macedonian) {
-
+                    Success = languageNoteKey["successMkd"];
+                    HazardGameNote = languageNoteKey["hazardGameNoteMkd"];
                     InsertPlayerName = MenuMkd.insertPlayerNameMkd;
                     InsertBalance = MenuMkd.insertBalanceMkd;
                     CardNamePrompt = MenuMkd.cardNamePromptMkd;
@@ -93,5 +99,6 @@ namespace GamesDevProject.cs {
              if (GeneralGamesMenu.enterGameChosen == PayingToGaming.pyramid)  GamePrice = 2.5; 
              if (GeneralGamesMenu.enterGameChosen == PayingToGaming.matrix) GamePrice = 3.4;
         }
+        
     }
 }

@@ -30,9 +30,9 @@ namespace GamesDevProject.cs {
             Parameters parameters = new Parameters();   
             Console.WriteLine(Parameters.GamesMenu);
         }
-        public void ColoredNotes() {
+        public void ColoredNotes(string note) {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Success");
+            Console.WriteLine(note);
             Console.ResetColor();
         }
        
@@ -62,7 +62,8 @@ namespace GamesDevProject.cs {
         }
         
         public void Inception(ILanguages languages, IPayingNotes payingNotes, IStartGame startGame) {
-                languages.ChooseLanguage();
+            
+            languages.ChooseLanguage();
             while(languagePrompt != "1" && languagePrompt != "2") languages.ChooseLanguage();
             GamesMenu(Parameters.GamesMenu);
                 payingNotes.ChoosePayToPlay(Parameters.ChoosePayToPlay);
