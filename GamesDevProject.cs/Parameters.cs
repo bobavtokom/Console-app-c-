@@ -17,13 +17,14 @@ namespace GamesDevProject.cs {
         public static string EnterUserName { get; set; }
         public static string ConfirmationOfCashPayment { get; set; }
         public static string PyramidPriceState { get; set; }
-                            
+        public static string ComputerCardIs { get; set; }
         public static string PyramidGreeting { get; set; }
         public static string FillWalletPrompt { get; set; }
         public static string PlayAgainPrompt { get; set; }
         public static string RefundPrompt { get; set; }
         public static string MatrixPriceState { get; set; }
         public static string MaybeNextTime { get; set; }
+        public static string DrawYourCard{ get; set; }
 
         public static string InsertColumnRate { get; set; }
         public static string InsertRawRate { get; set; }
@@ -34,12 +35,24 @@ namespace GamesDevProject.cs {
         public static string HazardGameNote { get; set; }
         public static double GamePrice { get; set; }
         public static string Success { get; set; }
-
+        public static string DrawComputerCard { get; set; }
+        public static string WinState { get; set; }
+        public static string LoseState { get; set; }
+        public static string NooneWinState { get; set; }
+        public static string PlaceBet { get; set; }
+        public static string YourCardIs { get; set; }
         public Parameters () {
             var languageNoteKey = new MenuEng();
             if (GeneralGamesMenu.languagePrompt == GeneralGamesMenu.english) {
                 //switch (GeneralGamesMenu.languagePrompt) {
                 //case "english":
+                    ComputerCardIs = languageNoteKey["computerCardIsEng"];
+                    YourCardIs = languageNoteKey["yourCardIsEng"];
+                    PlaceBet = languageNoteKey["placeBetAmountEng"];
+                    NooneWinState = languageNoteKey["nooneWinsEng"];
+                    LoseState = languageNoteKey["loseStateEng"];
+                    WinState = languageNoteKey["winStateEng"];
+                    DrawComputerCard = languageNoteKey["drawComputerCardEng"];
                     Success = languageNoteKey["successEng"];
                     HazardGameNote = languageNoteKey["hazardGameNoteEng"];
                     InsertPlayerName = MenuEngStates.insertPlayerNameEng;
@@ -64,11 +77,20 @@ namespace GamesDevProject.cs {
                     GamesMenu = MenuEngStates.gamesMenuEng;
                     ChoosePayToPlay = MenuEngStates.choosePayToPlayEng;
                     NotValidInput = MenuEngStates.notValidInputEng;
+                    DrawYourCard = languageNoteKey["drawYourCardEng"];
                    // break;
                    //  case "macedonian":
 
                     }
                     if (GeneralGamesMenu.languagePrompt == GeneralGamesMenu.macedonian) {
+
+                    ComputerCardIs = languageNoteKey["computerCardIsMkd"];
+                    YourCardIs = languageNoteKey["yourCardIsMkd"];
+                    PlaceBet = languageNoteKey["placeBetAmountMkd"];
+                    NooneWinState = languageNoteKey["nooneWinsMkd"];
+                    LoseState = languageNoteKey["loseStateMkd"];
+                    WinState = languageNoteKey["winStateMkd"];
+                    DrawComputerCard = languageNoteKey["drawComputerCardMkd"];
                     Success = languageNoteKey["successMkd"];
                     HazardGameNote = languageNoteKey["hazardGameNoteMkd"];
                     InsertPlayerName = MenuMkd.insertPlayerNameMkd;
@@ -93,8 +115,9 @@ namespace GamesDevProject.cs {
                     GamesMenu = MenuMkd.gamesMenuMkd;
                     ChoosePayToPlay = MenuMkd.choosePayToPlayMkd;
                     NotValidInput = MenuMkd.notValidInputMkd;
-                    //break;
-           // }
+                    DrawYourCard = languageNoteKey["drawYourCardMkd"];
+                //break;
+                // }
             }
              if (GeneralGamesMenu.enterGameChosen == PayingToGaming.pyramid)  GamePrice = 2.5; 
              if (GeneralGamesMenu.enterGameChosen == PayingToGaming.matrix) GamePrice = 3.4;

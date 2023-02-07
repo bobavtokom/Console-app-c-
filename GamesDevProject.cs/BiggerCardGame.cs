@@ -14,8 +14,6 @@ using System.Security.Policy;
 namespace GamesDevProject.cs {
     public class BiggerCardGame {
         public static string confirm = "y";
-        public static string cash = "1";
-        public static string card = "2";
         public static readonly double minimumBetAmount = 1;
         public static int min = 1;
         public static int max = 14;
@@ -23,31 +21,31 @@ namespace GamesDevProject.cs {
         public static int yourCard = deckOfCards.Next(min, max);
         public static int compCard = deckOfCards.Next(min, max);
             public static double BetAmount { get; set; }
-        public static void DrawYourCard() {
-            Console.WriteLine("Press \"1\" to draw your card");
+        public static void DrawYourCard(string drawYourCard, string yourCardIs) {
+            Console.WriteLine(drawYourCard);
             string yourCardPrompt = Console.ReadLine();
             while (yourCardPrompt != "1" && yourCardPrompt != null) {
-                Console.WriteLine("Press \"1\" to draw your card");
+                Console.WriteLine(drawYourCard);
                 yourCardPrompt = Console.ReadLine();
             }
-            Console.WriteLine("Your card is " + yourCard);
+            Console.WriteLine(yourCardIs + yourCard);
         }
-        public static void DrawComputerCard() {
-            Console.WriteLine("Press \"2\" to see computer card");
+        public static void DrawComputerCard(string drawComputerCard, string computerCardIs) {
+            Console.WriteLine(drawComputerCard);
             string compCardPrompt = Console.ReadLine();
             while (compCardPrompt != "2" && compCardPrompt != null) {
-                Console.WriteLine("Press \"2\" to see computer card");
+                Console.WriteLine(drawComputerCard);
                 compCardPrompt = Console.ReadLine();
             }
-            Console.WriteLine("Computer card is " + compCard);
+            Console.WriteLine(computerCardIs + compCard);
         }
-        public static void PlaceYourBet() {
-            Console.WriteLine("Place bet amount");
+        public static void PlaceYourBet(string placeBet) {
+            Console.WriteLine(placeBet);
             string betAmountString;
             betAmountString = Console.ReadLine();
             double b;
             while (!double.TryParse(betAmountString, out b)) {
-                Console.WriteLine("Place bet amount");
+                Console.WriteLine(placeBet);
                 betAmountString = Console.ReadLine();
             }
             BetAmount = Convert.ToDouble(betAmountString);
@@ -58,17 +56,17 @@ namespace GamesDevProject.cs {
             Parameters parameters = new Parameters();
             payingNotes.ChoosePayToPlay(Parameters.ChoosePayToPlay);
             while (payingNotes.PromptToPay != confirm) payingNotes.ChoosePayToPlay(Parameters.ChoosePayToPlay);
-            PlaceYourBet();
-            while (BetAmount > PlayerWallet.WalletBalance && BetAmount < minimumBetAmount) PlaceYourBet();
+            PlaceYourBet(Parameters.PlaceBet);
+            while (BetAmount > PlayerWallet.WalletBalance && BetAmount < minimumBetAmount) PlaceYourBet(Parameters.PlaceBet);
             Console.WriteLine("your bet: {0:C}", BetAmount);
-            DrawYourCard();
-            DrawComputerCard();
+            DrawYourCard(Parameters.DrawYourCard, Parameters.YourCardIs);
+            DrawComputerCard(Parameters.DrawComputerCard, Parameters.ComputerCardIs);
             if (yourCard > compCard) {
-                Console.WriteLine("you win");
+                Console.WriteLine(Parameters.WinState);
                 PlayerWallet.WalletBalance += BetAmount;
-            } else if (yourCard == compCard) Console.WriteLine("No one wins, try again ");
+            } else if (yourCard == compCard) Console.WriteLine(Parameters.NooneWinState);
             else {
-                Console.WriteLine("You lose ");
+                Console.WriteLine(Parameters.LoseState);
                 PlayerWallet.WalletBalance -= BetAmount;
             }
             PlayerWallet playerWallet = new PlayerWallet(PlayerWallet.PlayerName, PlayerWallet.WalletBalance);
